@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="转动早餐转盘，让神的菜单替你决定今天吃什么。" />
+    <title>神的菜单｜早餐转盘</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+
+      <section class="menu-card" aria-labelledby="page-title">
+        <header>
+          <p class="eyebrow"><span></span>BREAKFAST ORACLE<span></span></p>
+          <h1 id="page-title">神的菜单</h1>
+          <p class="subtitle">今天的早餐，交给命运。</p>
+        </header>
+
+        <div class="wheel-stage">
+          <div class="pointer" aria-hidden="true"><i></i></div>
+          <div class="wheel-shadow"></div>
+          <div class="wheel" id="wheel" aria-label="早餐选择转盘">
+            <div class="wheel-ring"></div>
+            <div class="divider"></div>
+            <div class="wheel-label label-one">
+              <span class="dish-icon">♨</span>
+              <strong>灌汤小笼包</strong>
+              <small>一笼热气 · 汤鲜皮薄</small>
+            </div>
+            <div class="wheel-label label-two">
+              <span class="dish-icon">◒</span>
+              <strong>豆腐脑</strong>
+              <small>细嫩顺滑 · 暖胃刚好</small>
+            </div>
+          </div>
+
+          <button class="spin-button" id="spin-button" type="button">
+            <span id="button-text">开转</span>
+            <small id="button-subtext">SPIN</small>
+          </button>
+        </div>
+
+        <div class="answer" id="answer" aria-live="polite">
+          <span>神谕已降下</span>
+          <strong id="result">等待天意</strong>
+        </div>
+
+        <footer><span>✦</span><p>吃好早餐，是今天的第一件正经事</p><span>✦</span></footer>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
