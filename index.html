@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="转动早餐转盘，让神的菜单替你决定今天吃什么。" />
-    <title>神的菜单｜早餐转盘</title>
+    <meta name="description" content="转动欢欢的菜单，让小幸运决定今天吃什么。" />
+    <title>神的菜单｜欢欢今天吃什么</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -22,6 +22,15 @@
           <p class="subtitle">今天吃什么，让小幸运来决定</p>
         </header>
 
+        <nav class="meal-tabs" aria-label="选择餐别">
+          <button class="meal-tab active" type="button" data-meal="breakfast" aria-pressed="true">
+            <span>☀</span> 早餐
+          </button>
+          <button class="meal-tab" type="button" data-meal="main" aria-pressed="false">
+            <span>♡</span> 正餐
+          </button>
+        </nav>
+
         <div class="wheel-stage">
           <div class="pointer" aria-hidden="true"><i></i></div>
           <div class="wheel-shadow"></div>
@@ -29,14 +38,14 @@
             <div class="wheel-ring"></div>
             <div class="divider"></div>
             <div class="wheel-label label-one">
-              <span class="dish-icon">♨</span>
-              <strong>灌汤小笼包</strong>
-              <small>一笼热气 · 汤鲜皮薄</small>
+              <span class="dish-icon" id="icon-one">♨</span>
+              <strong id="name-one">灌汤小笼包</strong>
+              <small id="desc-one">一笼热气 · 汤鲜皮薄</small>
             </div>
             <div class="wheel-label label-two">
-              <span class="dish-icon">◒</span>
-              <strong>豆腐脑</strong>
-              <small>细嫩顺滑 · 暖胃刚好</small>
+              <span class="dish-icon" id="icon-two">◒</span>
+              <strong id="name-two">豆腐脑</strong>
+              <small id="desc-two">细嫩顺滑 · 暖胃刚好</small>
             </div>
           </div>
 
