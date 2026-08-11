@@ -172,11 +172,24 @@ h1 {
 
 .wheel::after { content: ""; position: absolute; inset: 8%; border: 1px dashed rgba(255,255,255,.55); border-radius: 50%; }
 .wheel-ring { position: absolute; inset: 2.8%; border: 1px solid rgba(255,255,255,.62); border-radius: 50%; }
-.divider { position: absolute; top: 0; bottom: 0; left: calc(50% - 1px); width: 2px; background: rgba(255,255,255,.78); box-shadow: 0 0 5px rgba(113,57,79,.16); }
+#wheel-options { position: absolute; inset: 0; z-index: 2; }
 
-.wheel-label { position: absolute; z-index: 2; top: 50%; width: 44%; display: flex; flex-direction: column; align-items: center; gap: 5px; }
-.label-one { left: 3%; color: #fff; transform: translateY(-50%) rotate(-90deg); text-shadow: 0 1px 5px rgba(116,54,81,.18); }
-.label-two { right: 3%; color: #fff; transform: translateY(-50%) rotate(90deg); text-shadow: 0 1px 5px rgba(93,65,80,.18); }
+.wheel-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 43%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 5px rgba(93,65,80,.2);
+  transform: translate(-50%, -50%) rotate(var(--option-angle)) translateY(-124px) rotate(var(--counter-angle));
+}
+
+.wheel.three-options .wheel-label { width: 37%; transform: translate(-50%, -50%) rotate(var(--option-angle)) translateY(-118px) rotate(var(--counter-angle)); }
 .dish-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.2); font: 23px/1 sans-serif; }
 .wheel-label strong { font-size: clamp(16px, 4vw, 21px); letter-spacing: .06em; white-space: nowrap; }
 .wheel-label small { font-size: clamp(8px, 2vw, 10px); letter-spacing: .05em; opacity: .86; white-space: nowrap; }
@@ -238,6 +251,8 @@ footer span { color: #d68dab; font-size: 13px; }
   .meal-tabs { margin-bottom: 9px; }
   .meal-tab { min-width: 88px; padding: 8px 14px; }
   .wheel-stage { width: min(86vw, 375px); }
+  .wheel-label { transform: translate(-50%, -50%) rotate(var(--option-angle)) translateY(-28vw) rotate(var(--counter-angle)); }
+  .wheel.three-options .wheel-label { transform: translate(-50%, -50%) rotate(var(--option-angle)) translateY(-26vw) rotate(var(--counter-angle)); }
   .spin-button { width: 87px; }
   .spin-button span { font-size: 21px; }
   .answer { margin-top: 9px; }
