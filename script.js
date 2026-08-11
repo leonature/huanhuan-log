@@ -8,7 +8,14 @@ const meals = {
     { name: "火锅", icon: "♨", description: "热辣沸腾 · 幸福围炉" },
     { name: "烤肉", icon: "✦", description: "焦香滋滋 · 大口满足" },
   ],
+  milkTea: [
+    { name: "甜心芭乐", icon: "♡", description: "清甜果香 · 少女心动" },
+    { name: "抹茶", icon: "♧", description: "茶香微苦 · 回味清甜" },
+    { name: "西瓜椰椰", icon: "◒", description: "清爽西瓜 · 椰香满满" },
+  ],
 };
+
+const mealNames = { breakfast: "早餐", main: "正餐", milkTea: "奶茶" };
 
 const colors = ["#e9a0ba", "#c6b4e2", "#f3b7a9"];
 const wheel = document.querySelector("#wheel");
@@ -46,7 +53,7 @@ function renderWheel(items) {
 function showMeal(meal) {
   activeMeal = meal;
   renderWheel(meals[meal]);
-  wheel.setAttribute("aria-label", `${meal === "breakfast" ? "早餐" : "正餐"}选择转盘`);
+  wheel.setAttribute("aria-label", `${mealNames[meal]}选择转盘`);
   answer.classList.remove("answer-visible");
   result.textContent = "等待天意";
 

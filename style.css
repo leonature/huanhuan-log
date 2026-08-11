@@ -258,6 +258,10 @@ footer span { color: #d68dab; font-size: 13px; }
   .answer { margin-top: 9px; }
 }
 
+@media (max-width: 390px) {
+  .meal-tab { min-width: 76px; padding: 8px 9px; font-size: 12px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .wheel { transition-duration: .01ms; }
   .spin-button, .answer { transition: none; }
