@@ -24,9 +24,9 @@ main {
   min-height: 100vh;
   min-height: 100svh;
   display: grid;
-  place-items: center;
-  overflow: hidden;
-  padding: 28px 18px;
+  place-items: start center;
+  overflow-x: hidden;
+  padding: 92px 18px 40px;
   background:
     radial-gradient(circle at 16% 12%, rgba(255,255,255,.95) 0 3px, transparent 4px),
     radial-gradient(circle at 78% 20%, rgba(255,255,255,.75) 0 2px, transparent 3px),
@@ -61,7 +61,7 @@ main {
 
 @keyframes float { 50% { transform: translateY(-10px) rotate(8deg); } }
 
-.menu-card {
+.page-panel {
   position: relative;
   z-index: 1;
   width: min(100%, 610px);
@@ -74,6 +74,44 @@ main {
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
+
+.page-panel[hidden], .memory-panel[hidden] { display: none; }
+
+.page-panel.active { animation: page-in .42s ease both; }
+@keyframes page-in { from { opacity: 0; transform: translateY(10px); } }
+
+.site-nav {
+  position: absolute;
+  z-index: 20;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  border: 1px solid rgba(255,255,255,.92);
+  border-radius: 999px;
+  background: rgba(255,255,255,.66);
+  box-shadow: 0 10px 32px rgba(125,71,97,.13), inset 0 1px 0 white;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.site-nav-button {
+  padding: 10px 22px;
+  border: 0;
+  border-radius: 999px;
+  color: #9c778a;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: .22s ease;
+  white-space: nowrap;
+}
+
+.site-nav-button.active { color: white; background: linear-gradient(135deg, #dc91ad, #a85e7d); box-shadow: 0 5px 13px rgba(143,70,101,.22); }
+.site-nav-button:focus-visible { outline: 3px solid rgba(169,93,125,.25); }
 
 header { margin-bottom: 16px; }
 
@@ -243,9 +281,78 @@ footer { margin-top: 5px; display: flex; align-items: center; justify-content: c
 footer p { margin: 0; font-size: 10px; letter-spacing: .11em; }
 footer span { color: #d68dab; font-size: 13px; }
 
+.favorites-card { width: min(100%, 820px); padding: 35px 38px 27px; }
+.favorites-header { margin-bottom: 20px; }
+.favorites-header h2 { margin: 0; color: var(--berry-dark); font-family: "Songti SC", "STSong", serif; font-size: clamp(40px, 7vw, 60px); letter-spacing: .12em; text-indent: .12em; text-shadow: 0 3px 0 white, 0 8px 22px rgba(155,82,113,.12); }
+
+.memory-tabs { width: fit-content; margin: 0 auto 24px; padding: 5px; display: flex; gap: 4px; border-radius: 999px; background: rgba(255,255,255,.5); box-shadow: inset 0 1px 5px rgba(127,75,100,.08); }
+.memory-tab { padding: 10px 20px; border: 0; border-radius: 999px; color: #9d788b; background: transparent; font-size: 13px; font-weight: 650; cursor: pointer; transition: .2s ease; }
+.memory-tab span { display: inline-grid; place-items: center; min-width: 19px; height: 19px; margin-left: 5px; padding: 0 5px; border-radius: 99px; background: rgba(157,82,113,.1); font-size: 10px; }
+.memory-tab.active { color: white; background: linear-gradient(135deg,#dc91ad,#a85e7d); box-shadow: 0 5px 12px rgba(143,70,101,.2); }
+.memory-tab.active span { background: rgba(255,255,255,.22); }
+
+.memory-panel.active { animation: page-in .35s ease both; }
+.things-heading{margin:0 3px 17px;display:flex;align-items:flex-end;justify-content:space-between;text-align:left}.things-heading small{color:#b18499;font:700 8px/1 Arial,sans-serif;letter-spacing:.22em}.things-heading h3{margin:6px 0 0;color:#714d5f;font-family:"Songti SC","STSong",serif;font-size:22px;letter-spacing:.05em}.things-heading>span{padding:7px 11px;border-radius:99px;color:#a37089;background:#f4dce6;font-size:10px}
+.things-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.thing-card{overflow:hidden;border:1px solid rgba(255,255,255,.92);border-radius:24px;background:rgba(255,255,255,.53);box-shadow:0 13px 32px rgba(99,65,83,.1);text-align:left;transition:transform .24s ease,box-shadow .24s ease}.thing-card:hover{transform:translateY(-4px);box-shadow:0 18px 37px rgba(99,65,83,.15)}
+.thing-visual{position:relative;height:145px;overflow:hidden}.qingdao-card .thing-visual{background:linear-gradient(155deg,#a9d7df,#e6c4cf)}.xiamen-card .thing-visual{background:linear-gradient(155deg,#edc6ba,#d5c8e8)}.sanya-card .thing-visual{background:linear-gradient(155deg,#f4d3a8,#93d0d3)}
+.thing-visual::before{content:"";position:absolute;left:-8%;right:-8%;bottom:-43px;height:100px;border-radius:50%;background:rgba(255,255,255,.38);box-shadow:0 -10px 0 rgba(255,255,255,.17)}.thing-visual::after{content:"";position:absolute;right:18px;top:23px;width:38px;height:38px;border-radius:50%;background:rgba(255,246,213,.75);box-shadow:0 0 22px rgba(255,245,214,.7)}
+.thing-index{position:absolute;z-index:2;left:14px;top:12px;color:rgba(255,255,255,.82);font:700 11px/1 Georgia,serif;letter-spacing:.1em}.place-mark{position:absolute;z-index:2;left:50%;top:48%;transform:translate(-50%,-50%);color:white;font-family:"Songti SC","STSong",serif;font-size:30px;font-weight:900;letter-spacing:.18em;text-indent:.18em;text-shadow:0 3px 12px rgba(76,68,87,.22)}.wave-line{position:absolute;z-index:2;left:50%;bottom:13px;transform:translateX(-50%);color:rgba(255,255,255,.82);font:16px/1 Georgia,serif;white-space:nowrap}
+.thing-content{padding:18px 17px 15px}.thing-content>small{color:#b5859c;font-size:9px;letter-spacing:.12em}.thing-content h3{margin:7px 0 8px;color:#684658;font-family:"Songti SC","STSong",serif;font-size:21px;letter-spacing:.06em}.thing-content p{min-height:58px;margin:0;color:#866878;font-size:11px;line-height:1.75}.thing-footer{margin-top:13px;padding-top:11px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(150,105,127,.12);color:#a17b8e;font-size:9px}.thing-footer b{color:#ce86a3;font:18px/1 Georgia,serif}
+.destination-tabs { margin:0 auto 20px; display:flex; justify-content:center; gap:10px; }
+.destination-tab { min-width:145px; padding:12px 20px; border:1px solid rgba(255,255,255,.8); border-radius:17px; color:#987487; background:rgba(255,255,255,.48); box-shadow:0 7px 18px rgba(110,75,98,.07); font-size:13px; font-weight:650; cursor:pointer; transition:.23s ease; }
+.destination-tab span{margin-right:7px;font-size:18px;vertical-align:-1px}.destination-tab:hover{transform:translateY(-2px)}.destination-tab.active{color:white;background:linear-gradient(135deg,#cc83a1,#9270b0);box-shadow:0 9px 20px rgba(120,71,105,.2)}
+.destination-panel.active{animation:page-in .35s ease both}
+.destination-intro{position:relative;overflow:hidden;margin-bottom:15px;padding:22px 25px;display:flex;align-items:center;gap:18px;border-radius:23px;text-align:left;color:white;box-shadow:0 12px 27px rgba(86,72,104,.13)}
+.destination-intro::after{content:"";position:absolute;right:-25px;top:-45px;width:140px;height:140px;border:1px solid rgba(255,255,255,.3);border-radius:50%;box-shadow:0 0 0 18px rgba(255,255,255,.08),0 0 0 38px rgba(255,255,255,.05)}
+.city-intro{background:linear-gradient(125deg,#bd7695,#8974b1)}.sea-intro{background:linear-gradient(125deg,#62aebd,#8785c4)}
+.intro-icon{position:relative;z-index:1;display:grid;place-items:center;flex:0 0 58px;height:58px;border-radius:18px;background:rgba(255,255,255,.2);font:29px/1 Georgia,serif}.destination-intro div{position:relative;z-index:1}.destination-intro small{font:700 8px/1 Arial,sans-serif;letter-spacing:.25em;opacity:.75}.destination-intro h3{margin:5px 0 4px;font-family:"Songti SC","STSong",serif;font-size:24px;letter-spacing:.08em}.destination-intro p{margin:0;font-size:11px;opacity:.8}
+.destination-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.destination-card{position:relative;min-height:235px;padding:22px 18px 18px;overflow:hidden;border:1px solid rgba(255,255,255,.85);border-radius:23px;text-align:left;box-shadow:0 12px 30px rgba(91,65,83,.09);transition:transform .25s ease,box-shadow .25s ease}.destination-card:hover{transform:translateY(-4px);box-shadow:0 17px 34px rgba(91,65,83,.14)}
+.destination-card::after{content:"";position:absolute;right:-30px;bottom:-42px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.3)}
+.city-pink{background:linear-gradient(145deg,#f9dce7,#f4c9da)}.city-purple{background:linear-gradient(145deg,#e8def5,#d8c9ed)}.city-orange{background:linear-gradient(145deg,#f8e2d5,#f1c8bb)}.sea-blue{background:linear-gradient(145deg,#d9f0f1,#bfe0e5)}.sea-pink{background:linear-gradient(145deg,#fae0e8,#f3cbd9)}.sea-purple{background:linear-gradient(145deg,#e5e0f5,#cfc8ea)}
+.card-number{position:absolute;right:14px;top:12px;color:rgba(113,69,91,.22);font:700 27px/1 Georgia,serif}.card-icon{display:grid;place-items:center;width:45px;height:45px;margin-bottom:17px;border-radius:15px;color:#815f72;background:rgba(255,255,255,.55);font-size:22px;box-shadow:inset 0 1px 0 white}.destination-card h4{margin:0 0 9px;color:#684859;font-family:"Songti SC","STSong",serif;font-size:19px;letter-spacing:.05em}.destination-card p{margin:0;color:#826676;font-size:11px;line-height:1.75}.card-tags{position:absolute;z-index:1;left:18px;bottom:17px;display:flex;gap:5px}.card-tags span{padding:5px 7px;border-radius:99px;color:#8d6c7d;background:rgba(255,255,255,.54);font-size:9px}
+.wish-card { display: grid; grid-template-columns: .92fr 1.08fr; overflow: hidden; border: 1px solid rgba(255,255,255,.92); border-radius: 28px; background: rgba(255,255,255,.48); box-shadow: 0 18px 42px rgba(112,78,105,.12); text-align: left; }
+.wish-art { position: relative; min-height: 330px; overflow: hidden; background: linear-gradient(#f6c8d4 0 38%,#d9d2eb 38% 55%,#8dcbd0 55% 100%); }
+.sun { position: absolute; top: 38px; right: 42px; width: 60px; height: 60px; border-radius: 50%; background: #fff0c8; box-shadow: 0 0 40px #fff4d4; }
+.cloud { position: absolute; width: 80px; height: 22px; border-radius: 99px; background: rgba(255,255,255,.72); filter: blur(.2px); }
+.cloud::before,.cloud::after { content:""; position:absolute; bottom:0; border-radius:50%; background:inherit; }
+.cloud::before { left:15px; width:36px; height:36px; }.cloud::after { right:13px; width:28px; height:28px; }
+.cloud-one { top: 54px; left: 30px; }.cloud-two { top: 118px; right: 18px; transform: scale(.65); opacity:.65; }
+.sea { position: absolute; left: -10%; width: 120%; border-radius: 50%; }
+.sea-back { top: 51%; height: 48%; background: #91ccd1; transform: rotate(-3deg); }
+.sea-front { top: 67%; height: 47%; background: #6db6c1; transform: rotate(4deg); box-shadow: 0 -7px 0 rgba(255,255,255,.55),0 -13px 0 rgba(136,203,208,.7); }
+.shell { position:absolute; z-index:2; bottom:22px; left:30px; color:white; font:34px/1 Georgia,serif; transform:rotate(-15deg); text-shadow:0 3px 12px rgba(68,120,131,.3); }
+.wish-copy { display:flex; flex-direction:column; justify-content:center; padding:35px 32px; }
+.wish-label,.album-heading span { color:#b8869f; font:700 9px/1.2 Arial,sans-serif; letter-spacing:.22em; }
+.wish-copy h3,.album-heading h3 { margin:9px 0 13px; color:var(--berry-dark); font-family:"Songti SC","STSong",serif; font-size:31px; letter-spacing:.08em; }
+.wish-copy > p { margin:0; color:#826575; font-size:13px; line-height:1.85; }
+.wish-meta { margin:19px 0; display:flex; flex-wrap:wrap; gap:7px; }
+.wish-meta span { padding:7px 10px; border-radius:999px; color:#8c6579; background:#f9e4ed; font-size:10px; }
+.wish-note { padding:13px 15px; border-left:3px solid #df9cb5; border-radius:0 12px 12px 0; background:rgba(255,255,255,.5); font-family:"Songti SC","STSong",serif; }
+.future-note { margin-top:15px; padding:15px 20px; display:flex; align-items:center; gap:13px; border:1px dashed rgba(172,106,136,.3); border-radius:18px; color:#a57d91; text-align:left; }
+.future-note > span { display:grid; place-items:center; width:34px; height:34px; border-radius:50%; background:#f5d9e5; font-size:20px; }
+.future-note strong,.future-note small { display:block; }.future-note strong{font-size:12px}.future-note small{margin-top:3px;font-size:10px;opacity:.75}
+
+.album-card { padding:24px; border:1px solid rgba(255,255,255,.9); border-radius:28px; background:rgba(255,255,255,.45); box-shadow:0 18px 42px rgba(112,78,105,.11); text-align:left; }
+.album-heading { margin-bottom:17px; display:flex; align-items:flex-end; justify-content:space-between; }
+.album-heading h3 { margin:5px 0 0; }.album-heading time{color:#ab8599;font-size:11px}
+.album-cover { position:relative; width:100%; height:340px; padding:0; overflow:hidden; border:7px solid white; border-radius:21px; background:#eee; box-shadow:0 12px 28px rgba(90,57,75,.17); cursor:pointer; }
+.album-cover img { width:100%; height:100%; display:block; object-fit:cover; transition:transform .5s ease; }.album-cover:hover img{transform:scale(1.025)}
+.album-sticker { position:absolute; left:22px; bottom:19px; padding:9px 14px; border-radius:8px; color:#966077; background:#fff8f2; box-shadow:0 4px 12px rgba(74,43,56,.16); font-family:"Songti SC","STSong",serif; font-size:14px; transform:rotate(-2deg); }
+.album-count { position:absolute; right:15px; top:14px; padding:6px 10px; border-radius:99px; color:white; background:rgba(76,51,63,.5); font:10px/1 Arial,sans-serif; backdrop-filter:blur(5px); }
+.memory-writing { margin-top:14px; padding:18px 20px; border-radius:16px; background:rgba(255,255,255,.56); }.memory-writing span{color:#b5849b;font-size:10px;letter-spacing:.16em}.memory-writing p{margin:8px 0 0;color:#735968;font-family:"Songti SC","STSong",serif;font-size:13px;line-height:1.9}
+
 @media (max-width: 520px) {
-  main { padding: 18px 12px; align-items: center; }
+  main { padding: 78px 12px 22px; }
+  .site-nav { top:16px; }.site-nav-button{padding:9px 16px;font-size:12px}
   .menu-card { padding: 23px 10px 18px; border-radius: 30px; }
+  .favorites-card { padding:25px 12px 18px;border-radius:30px; }
+  .favorites-header h2{font-size:42px}.memory-tabs{margin-bottom:16px}.memory-tab{padding:9px 13px;font-size:12px}
+  .things-heading{align-items:flex-start}.things-heading h3{font-size:18px}.things-grid{grid-template-columns:1fr}.thing-card{display:grid;grid-template-columns:40% 60%}.thing-visual{height:100%;min-height:185px}.thing-content p{min-height:auto}.place-mark{font-size:25px}.thing-footer{margin-top:10px}
+  .destination-tabs{gap:7px}.destination-tab{min-width:130px;padding:10px 13px}.destination-intro{padding:18px}.intro-icon{flex-basis:49px;height:49px}.destination-intro h3{font-size:21px}.destination-grid{grid-template-columns:1fr}.destination-card{min-height:190px}.card-tags{position:relative;left:auto;bottom:auto;margin-top:15px}
+  .wish-card{grid-template-columns:1fr}.wish-art{min-height:210px}.wish-copy{padding:25px 21px}.wish-copy h3{font-size:27px}.wish-meta{margin:15px 0}
+  .album-card{padding:14px}.album-heading{align-items:flex-start}.album-heading h3{font-size:25px}.album-heading time{margin-top:4px}.album-cover{height:230px;border-width:5px}.album-sticker{left:12px;bottom:12px}.album-thumb{height:68px}
   header { margin-bottom: 12px; }
   .eyebrow { font-size: 8px; letter-spacing: .15em; }
   .meal-tabs { margin-bottom: 9px; }

@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="转动欢欢的菜单，让小幸运决定今天吃什么。" />
-    <title>神的菜单｜欢欢今天吃什么</title>
+    <meta name="description" content="欢欢的小小日常，记录喜欢的事和我们一起走过的时光。" />
+    <title>欢欢小记｜喜欢的事与回忆</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -15,7 +15,12 @@
       <div class="floating-decor decor-two">♡</div>
       <div class="floating-decor decor-three">✦</div>
 
-      <section class="menu-card" aria-labelledby="page-title">
+      <nav class="site-nav" aria-label="页面导航">
+        <button class="site-nav-button active" type="button" data-page="menu" aria-pressed="true">今天吃什么</button>
+        <button class="site-nav-button" type="button" data-page="favorites" aria-pressed="false">喜欢的事情</button>
+      </nav>
+
+      <section class="page-panel menu-card active" id="menu-page" data-page-panel="menu" aria-labelledby="page-title">
         <header>
           <p class="eyebrow"><span></span>HUANHUAN'S LITTLE ORACLE<span></span></p>
           <h1 id="page-title">神的菜单</h1>
@@ -54,6 +59,66 @@
         </div>
 
         <footer><span>♡</span><p>欢欢的每一天，都要从好心情开始</p><span>♡</span></footer>
+      </section>
+
+      <section class="page-panel favorites-card" id="favorites-page" data-page-panel="favorites" aria-labelledby="favorites-title" hidden>
+        <header class="favorites-header">
+          <p class="eyebrow"><span></span>OUR LITTLE WISH LIST<span></span></p>
+          <h2 id="favorites-title">喜欢的事情</h2>
+          <p class="subtitle">想和你一起，把喜欢的事慢慢做完</p>
+        </header>
+
+        <nav class="memory-tabs" aria-label="事情状态">
+          <button class="memory-tab active" type="button" data-memory="todo" aria-pressed="true">
+            未完成 <span>3</span>
+          </button>
+          <button class="memory-tab" type="button" data-memory="done" aria-pressed="false">
+            已经完成 <span>1</span>
+          </button>
+        </nav>
+
+        <div class="memory-panel active" data-memory-panel="todo">
+          <div class="things-heading">
+            <div><small>THINGS WE WANT TO DO</small><h3>接下来，想和你一起完成</h3></div>
+            <span>3 件事</span>
+          </div>
+
+          <div class="things-grid">
+            <article class="thing-card qingdao-card">
+              <div class="thing-visual"><span class="thing-index">01</span><span class="place-mark">青岛</span><span class="wave-line">～～～</span></div>
+              <div class="thing-content"><small>未完成 · 旅行</small><h3>青岛旅游</h3><p>一起去看看红瓦绿树和海，等有时间的时候就出发。</p><div class="thing-footer"><span>想和欢欢一起去</span><b>♡</b></div></div>
+            </article>
+            <article class="thing-card xiamen-card">
+              <div class="thing-visual"><span class="thing-index">02</span><span class="place-mark">厦门</span><span class="wave-line">✿ ～～</span></div>
+              <div class="thing-content"><small>未完成 · 旅行</small><h3>厦门旅游</h3><p>去一座舒服的海边城市，慢慢走、慢慢吃、慢慢拍照。</p><div class="thing-footer"><span>等待合适的日子</span><b>♡</b></div></div>
+            </article>
+            <article class="thing-card sanya-card">
+              <div class="thing-visual"><span class="thing-index">03</span><span class="place-mark">三亚</span><span class="wave-line">☀ ～～</span></div>
+              <div class="thing-content"><small>未完成 · 旅行</small><h3>三亚旅游</h3><p>去看很蓝的海，在沙滩上晒太阳，留下一组属于我们的照片。</p><div class="thing-footer"><span>想去温暖的地方</span><b>♡</b></div></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="memory-panel" data-memory-panel="done" hidden>
+          <article class="album-card">
+            <div class="album-heading">
+              <div><span>MEMORY · 01</span><h3>大连旅游</h3></div>
+              <time>已完成</time>
+            </div>
+
+            <button class="album-cover" type="button" aria-label="打开海边回忆相册">
+              <img src="assets/seaside-memory.png" alt="粉色晚霞下，两个人一起在海边散步的插画" />
+              <span class="album-sticker">我们的大连 ♡</span>
+              <span class="album-count">相册</span>
+            </button>
+            <div class="memory-writing">
+              <span>关于这次旅行</span>
+              <p>一起去了一座有海的城市，也一起留下了一段属于我们的回忆。这里可以记录旅行日期、去过的地方、发生的小事，以及当时最想记住的心情。</p>
+            </div>
+          </article>
+        </div>
+
+        <footer><span>♡</span><p>愿望会实现，平凡的日子也会变成回忆</p><span>♡</span></footer>
       </section>
     </main>
     <script src="script.js"></script>

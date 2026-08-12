@@ -26,10 +26,46 @@ const buttonSubtext = document.querySelector("#button-subtext");
 const answer = document.querySelector("#answer");
 const result = document.querySelector("#result");
 const tabs = document.querySelectorAll(".meal-tab");
+const siteNavButtons = document.querySelectorAll(".site-nav-button");
+const pagePanels = document.querySelectorAll("[data-page-panel]");
+const memoryTabs = document.querySelectorAll(".memory-tab");
+const memoryPanels = document.querySelectorAll("[data-memory-panel]");
 
 let activeMeal = "breakfast";
 let rotation = 0;
 let spinning = false;
+
+siteNavButtons.forEach((navButton) => {
+  navButton.addEventListener("click", () => {
+    const page = navButton.dataset.page;
+    siteNavButtons.forEach((item) => {
+      const selected = item === navButton;
+      item.classList.toggle("active", selected);
+      item.setAttribute("aria-pressed", String(selected));
+    });
+    pagePanels.forEach((panel) => {
+      const selected = panel.dataset.pagePanel === page;
+      panel.hidden = !selected;
+      panel.classList.toggle("active", selected);
+    });
+  });
+});
+
+memoryTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const memory = tab.dataset.memory;
+    memoryTabs.forEach((item) => {
+      const selected = item === tab;
+      item.classList.toggle("active", selected);
+      item.setAttribute("aria-pressed", String(selected));
+    });
+    memoryPanels.forEach((panel) => {
+      const selected = panel.dataset.memoryPanel === memory;
+      panel.hidden = !selected;
+      panel.classList.toggle("active", selected);
+    });
+  });
+});
 
 function renderWheel(items) {
   const segment = 360 / items.length;
